@@ -13,7 +13,7 @@ All NPM packages are available for your use along with choosing whichever framew
   - [X] view their username
   - [X] view their avatar profile picture
 - [X] Be able to view comments and replies
-- [ ] Ability to expand or collapse comments
+- [X] Ability to expand or collapse comments
 
 ## File Response Structures
 
