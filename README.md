@@ -8,11 +8,11 @@ Design and implement a comment section similiar to reddit.com.
 
 All NPM packages are available for your use along with choosing whichever framework of your preference.
 
-- [ ] Ability to view a list of users
-  - [ ] view their email
-  - [ ] view their username
-  - [ ] view their avatar profile picture
-- [ ] Be able to view comments and replies
+- [X] Ability to view a list of users
+  - [X] view their email
+  - [X] view their username
+  - [X] view their avatar profile picture
+- [X] Be able to view comments and replies
 - [ ] Ability to expand or collapse comments
 
 ## File Response Structures
