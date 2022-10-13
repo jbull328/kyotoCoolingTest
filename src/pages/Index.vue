@@ -1,9 +1,13 @@
 <script setup>
-    import { reactive } from 'vue';
+    import { ref } from 'vue';
     import axios from 'axios';
+    // eslint-disable-next-line no-unused-vars
+    import UsersList from '../components/UsersList.vue'
+    // eslint-disable-next-line no-unused-vars
+    import CommentsList from '../components/CommentsList.vue'
 
-    const users = reactive('')
-    const comments = reactive('')
+    const users = ref('')
+    const comments = ref('')
         
     const getData = async function() {
         await axios.get('assets/users.json').then(response => (
@@ -21,10 +25,9 @@
 <template>
     <div class="container">
         <b-tabs content-class="mt-3">
-            <b-tab title="Users" active><UsersList :users="users"/></b-tab>
-            <b-tab title="Comments" ><p>This will be Comments</p></b-tab>
+            <b-tab title="Users" active><UsersList :users="users.data"/></b-tab>
+            <b-tab title="Comments" ><CommentsList :comments="comments.data" :users="users.data"/></b-tab>
         </b-tabs>
-        Why {{users}}
     </div>
 </template>
 
