@@ -1,9 +1,8 @@
 <script setup>
-import { defineProps, ref, props } from 'vue';
+import { defineProps } from 'vue';
 // eslint-disable-next-line no-unused-vars
 import ChildComments from './ChildComments.vue';
-// eslint-disable-next-line no-unused-vars
-import Comment from './Comment.vue';
+
 
  defineProps({
     comment: Object,
@@ -14,32 +13,26 @@ import Comment from './Comment.vue';
 });
 
 
-// eslint-disable-next-line no-unused-vars
-const showReplies = ref(false)
-
-// eslint-disable-next-line no-unused-vars
-function filterChildComments(parentComment) {
-    const commentFilter = props.commentsAll.filter(childComment => childComment.parentId === parentComment.id ) 
-    return commentFilter
-}
-
-
-
 </script>
 
 <template>
-    <div class="vert-line mt-3 mb-4 ">
-        <div class="">
-            <div >Comment: {{comment.message}}</div>
-            <div >By: {{user.name}}</div>
-           
-            <b-button @click="showReplies = !showReplies">Show Replies</b-button>
-                
-            
-        </div>
+    <b-card class="h-100 text-left" >
+        <b-card-text class="vert-line mt-3 pl-3 mb-4 h-100">
         
-        <ChildComments v-if="showReplies" class="flex-grow-1" :comments="childComments" :users-all="usersAll" />
-    </div>
+            <div class="pl-2">Comment: {{comment.message}}</div>
+            <div class="pl-2" >By: {{user.name}}</div>
+    
+            <b-button v-if="childComments" class="mt-2 pl-2" v-b-toggle="`replies-${comment.id}`">Show Replies</b-button>    
+                        
+            <b-collapse :id="`replies-${comment.id}`" >
+                <b-card class="mt-2">
+                    <ChildComments :comments="childComments" :comments-all="commentsAll" :users-all="usersAll" />
+                 </b-card>
+             </b-collapse>
+        
+        </b-card-text>
+    </b-card>
+    
 </template>
 
 <style>
